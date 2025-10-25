@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  readarr-ol-meta:
+    build: .
+    container_name: readarr-ol-meta
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
+    environment:
+      PORT: "${PORT:-8080}"
+      LOG_LEVEL: "${LOG_LEVEL:-info}"
+      OL_PAGE_SIZE: "${OL_PAGE_SIZE:-200}"
+      ENABLE_CACHE: "${ENABLE_CACHE:-true}"
+      CACHE_TTL_MS: "${CACHE_TTL_MS:-600000}"
+      CACHE_MAX: "${CACHE_MAX:-500}"
+      CORS_ORIGIN: "${CORS_ORIGIN:-*}"
+      BASE_PATH: "${BASE_PATH:-}"
+    restart: unless-stopped
